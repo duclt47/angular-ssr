@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import * as XLSX from "xlsx";
 import { IRbT } from '../models/rbt.model';
-import { Observable } from 'rxjs';
+import { Firestore, collectionData, collection, addDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectDataService {
+  firestore: Firestore = inject(Firestore);
 
   constructor(private http: HttpClient) { }
 
@@ -70,5 +71,12 @@ export class CollectDataService {
 
     return results
 
+  }
+
+  public addNewRbT() {
+    const itemCollection = collection(this.firestore, 'items');
+    addDoc({ 'a': 1 }, <UserProfile>{ username }).then((documentReference: DocumentReference) => {
+      // the documentReference provides access to the newly created document
+    });
   }
 }

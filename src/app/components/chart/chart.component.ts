@@ -14,7 +14,7 @@ export type ChartOptions = {
   legend?: ApexLegend;
 };
 @Component({
-  selector: 'app-chart',
+  selector: 'app-bar-chart',
   templateUrl: './chart.component.html',
   styleUrl: './chart.component.scss'
 })

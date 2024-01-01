@@ -42,12 +42,7 @@
             ],
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -68,7 +63,8 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "ssr": false
             }
           },
           "defaultConfiguration": "production"
@@ -109,6 +105,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "chart-ngmodel:build:production",
+              "serveTarget": "chart-ngmodel:serve:production"
+            },
+            "development": {
+              "buildTarget": "chart-ngmodel:build:development",
+              "serveTarget": "chart-ngmodel:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

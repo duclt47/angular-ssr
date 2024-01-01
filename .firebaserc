@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ninex-39b24": {
+      "hosting": {
+        "chart-ngmodel": [
+          "ninex-39b24"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ninex-39b24"
+  }
+}

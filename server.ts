@@ -11,8 +11,6 @@ export function app(): express.Express {
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
-  global['window'] = window;
-  global['document'] = window.document;
 
   const commonEngine = new CommonEngine();
 
@@ -30,7 +28,6 @@ export function app(): express.Express {
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
-
     commonEngine
       .render({
         bootstrap: AppServerModule,
